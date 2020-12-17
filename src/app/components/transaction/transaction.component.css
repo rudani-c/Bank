@@ -1,0 +1,121 @@
+.form-group {
+  padding-bottom: 1rem;
+}
+
+.form-group label,
+.form-group input {
+  display: block;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.form-group input {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-top: 0.5rem;
+  padding-bottom: 0.2rem;
+  color: #777;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.btn-group {
+  margin-top: 2rem;
+  text-align: right;
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 0.5rem 4rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: var(--primary-color);
+}
+
+.btn-white {
+  padding: 0.3rem 1rem;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 0;
+  text-transform: uppercase;
+}
+
+.main-content {
+  height: 90vh;
+  background-image: url(/assets/background.jpg);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: cover;
+  overflow-y: scroll;
+  background-attachment: fixed;
+}
+
+.contents {
+  display: flex;
+  gap: 2rem;
+  padding: 3rem 0;
+}
+
+.transfer-box {
+  flex: 2;
+}
+
+.transactions-box {
+  flex: 4;
+}
+
+.box-header {
+  background-color: var(--secondary-color);
+  color: #fff;
+  padding: 0.6rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.box-header--1 {
+  padding: 0.4rem 0.5rem;
+}
+
+.box-header-title {
+  font-weight: 200;
+}
+
+.box-header-img {
+  position: absolute;
+  left: 1rem;
+  height: 1rem;
+}
+.box-content {
+  background-color: #fff;
+  padding: 1rem;
+}
+
+.options-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.options-row .search-text {
+  flex: 2;
+}
+
+.options-row label {
+  display: inline;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+}
+
+.transaction {
+  padding: 0.5rem 1rem;
+}
