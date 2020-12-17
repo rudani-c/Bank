@@ -59,6 +59,20 @@
               <a href="#" class="btn btn-white">Amount</a>
             </div>
           </div>
+          <div class="transactions">
+            <div *ngFor="let t of transactionsArray; let i = index" class="transaction" [ngStyle]="{'border-left': '6px solid ' + t.categoryCode}">
+              <span>{{ t.dates.valueDate | date: 'MMM d' }}</span>
+              <div class="trans-details">
+                <div class="merchant">
+                  <img [src]="getMerchantLogoUrl(t.merchant.name)" alt="" class="merchant-image">
+                  <span>{{ t.merchant.name }}
+                    <br><span class="m-type">{{ t.transaction.type }}</span>
+                  </span>
+                </div>
+                <span>${{ t.transaction.amountCurrency.amount }}</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
