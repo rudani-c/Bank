@@ -8,6 +8,11 @@ import { TransactionService } from '../../services/transaction.service';
 })
 export class TransactionComponent implements OnInit {
   transactionsArray = [];
+  balance = 5824.76;
+  filterStr = '';
+  order = 'asc';
+  fieldName = '';
+
   constructor(private transactionService: TransactionService) {}
 
   ngOnInit(): void {
@@ -46,6 +51,21 @@ export class TransactionComponent implements OnInit {
         return '/assets/icons/southern-electric-company.png';
       default:
         return '/assets/icons/backbase.png';
+    }
+  }
+
+  sort(f) {
+    if(f == this.fieldName) {
+      if(this.order == 'asc') {
+        this.order = 'desc';
+      } else if(this.order == 'desc'){
+        this.order = '';
+      } else {
+        this.order = 'asc';
+      }
+    } else {
+      this.fieldName = f;
+      this.order = 'asc';
     }
   }
 }
