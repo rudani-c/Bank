@@ -120,5 +120,8 @@
         }
       }
     }},
-  "defaultProject": "bank"
+  "defaultProject": "bank",
+  "cli": {
+    "analytics": false
+  }
 }
