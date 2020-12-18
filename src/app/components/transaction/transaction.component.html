@@ -10,28 +10,46 @@
           />
           <h4 class="box-header-title">Make a Transfer</h4>
         </div>
-        <div class="box-content">
+        <div class="box-content" *ngIf="!isSubmitted">
           <div class="form-group">
             <label for="fa">FROM ACCOUNT</label>
             <input
               type="text"
               class="input-box"
               id="fa"
-              value="Free Checking(4692) - $5824.76"
+              [(ngModel)]="fromStr"
               disabled
             />
           </div>
           <div class="form-group">
             <label for="ta">TO ACCOUNT</label>
-            <input type="text" class="input-box" id="ta" />
+            <input type="text" class="input-box" id="ta" [(ngModel)]="toAcc" />
           </div>
           <div class="form-group">
             <label for="am">AMOUNT</label>
-            <input type="text" class="input-box" id="am" placeholder="$ 0.00" />
+            <input
+              type="number"
+              class="input-box"
+              id="am"
+              placeholder="$ 0.00"
+              [(ngModel)]="amt"
+            />
           </div>
           <div class="btn-group">
-            <a href="#" class="btn btn-primary">SUBMIT</a>
+            <a class="btn btn-primary" (click)="isSubmitted = true">SUBMIT</a>
           </div>
+        </div>
+        <div class="box-content" *ngIf="isSubmitted">
+          <h4>Preview Transfer</h4>
+          <p>To Account : {{ toAcc }}</p>
+          <p>Amount : {{ amt }}</p>
+          <a
+            class="btn btn-primary"
+            style="margin-top: 3rem; margin-right: 1rem"
+            (click)="onSubmit()"
+            >TRANSFER</a
+          >
+          <a class="btn btn-white" (click)="isSubmitted = false">CANCEL</a>
         </div>
       </div>
       <div class="transactions-box">
@@ -48,10 +66,20 @@
             <div class="form-group search-text">
               <input
                 type="text"
-                class="input-box"
-                placeholder="Search by typing"
+                matInput
+                class="search-input"
                 [(ngModel)]="filterStr"
+                placeholder="Search by typing"
               />
+              <button
+                mat-button
+                mat-icon-button
+                class="clear-filter"
+                (click)="clearFilterField()"
+                *ngIf="filterStr"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
             </div>
             <div class="sort-group">
               <label for="">Sort by</label>

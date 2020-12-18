@@ -1,3 +1,19 @@
+.main-content {
+  height: 90vh;
+  background-image: url(/assets/background.jpg);
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+  background-size: cover;
+  overflow-y: scroll;
+  background-attachment: fixed;
+}
+
+.contents {
+  display: flex;
+  gap: 2rem;
+  padding: 3rem 0;
+}
+
 .form-group {
   padding-bottom: 1rem;
 }
@@ -48,22 +64,6 @@
   text-transform: uppercase;
 }
 
-.main-content {
-  height: 90vh;
-  background-image: url(/assets/background.jpg);
-  background-repeat: no-repeat;
-  background-position: 100% 100%;
-  background-size: cover;
-  overflow-y: scroll;
-  background-attachment: fixed;
-}
-
-.contents {
-  display: flex;
-  gap: 2rem;
-  padding: 3rem 0;
-}
-
 .transfer-box {
   flex: 2;
 }
@@ -107,6 +107,18 @@
 
 .options-row .search-text {
   flex: 2;
+  position: relative;
+}
+
+.clear-filter {
+  position: absolute;
+  right: -10px;
+  top: -2px;
+  background-color: unset;
+}
+
+.clear-filter .mat-icon {
+  font-size: 16px;
 }
 
 .options-row label {
@@ -159,7 +171,19 @@
   .contents {
     flex-direction: column;
   }
+  .btn-white {
+    padding: 0.3rem 0.6rem;
+  }
+  .options-row {
+    flex-direction: column;
+  }
+  .transaction {
+    gap: 1rem;
+  }
   .trans-details {
     width: 100%;
+  }
+  .merchant-image {
+    height: 2rem;
   }
 }

@@ -7,11 +7,16 @@ import { TransactionService } from '../../services/transaction.service';
   styleUrls: ['./transaction.component.css'],
 })
 export class TransactionComponent implements OnInit {
-  transactionsArray = [];
+
   balance = 5824.76;
+  fromStr = 'Free Checking(4692) - $' + this.balance;
   filterStr = '';
+  toAcc = '';
+  amt;
   order = 'asc';
+  transactionsArray: any = [];
   fieldName = '';
+  isSubmitted = false;
 
   constructor(private transactionService: TransactionService) {}
 
@@ -19,7 +24,6 @@ export class TransactionComponent implements OnInit {
     this.transactionService.getTransactions().subscribe(
       (response: any) => {
         this.transactionsArray = response.data;
-        console.log(this.transactionsArray);
       },
       (err) => {
         alert(err);
@@ -67,5 +71,37 @@ export class TransactionComponent implements OnInit {
       this.fieldName = f;
       this.order = 'asc';
     }
+  }
+
+  onSubmit() {
+    this.isSubmitted = false;
+    if(this.balance - this.amt < -500) {
+      alert('You can not overdraft your account beyond a balance of $ -500.00');
+      return;
+    }
+    this.balance -= this.amt;
+    this.fromStr = 'Free Checking(4692) - $' + this.balance;
+    let obj = {
+      categoryCode: '#12a580',
+      dates: {
+        valueDate: new Date().getTime()
+      },
+      merchant: {
+        accountNumber: this.toAcc,
+        name: 'Test'
+      },
+      transaction: {
+        amountCurrency: {amount: this.amt, currencyCode: "EUR"},
+        creditDebitIndicator: "DBIT",
+        type: "Card Payment"
+      }
+    }
+    this.transactionsArray = [obj, ...this.transactionsArray];
+    this.amt = '';
+    this.toAcc = '';
+  }
+
+  clearFilterField() {
+    this.filterStr = '';
   }
 }
