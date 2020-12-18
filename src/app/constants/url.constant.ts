@@ -1,1 +1,1 @@
-export const GET_TRANSACTIONS_URL = '/assets/mock/transactions.json';
+export const GET_TRANSACTIONS_URL = 'assets/mock/transactions.json';
